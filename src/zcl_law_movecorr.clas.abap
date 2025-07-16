@@ -57,5 +57,20 @@ CLASS zcl_law_movecorr IMPLEMENTATION.
         )
         col4 = 'x4'
     ).
+
+*    out->write( ls_struct1 ).
+    out->write( ls_struct2 ).
+    out->write( |\n \n \n | ).
+
+*    MOVE-CORRESPONDING ls_struct1 TO ls_struct2.
+*    out->write( ls_struct2 ).
+*    out->write( |\n \n \n | ).
+
+    MOVE-CORRESPONDING ls_struct1 TO ls_struct2 EXPANDING NESTED TABLES.
+    out->write( ls_struct2 ).
+    out->write( |\n \n \n | ).
+
+    " MOVE CORRESPONDING EXPANDING NESTED TABLES KEEPING TARGET LINES
+    " Parang Append new value from 1 itab with deep structure/nested tables to another
   ENDMETHOD.
 ENDCLASS.
