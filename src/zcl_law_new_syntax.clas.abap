@@ -39,6 +39,7 @@ CLASS zcl_law_new_syntax IMPLEMENTATION.
 
     out->write( lt_students2 ).
     out->write( lo_string->* ).
+    out->write( lines( lt_students2 ) ).
   ENDMETHOD.
 
 ENDCLASS.
