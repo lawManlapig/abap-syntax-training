@@ -66,11 +66,25 @@ CLASS zcl_law_movecorr IMPLEMENTATION.
 *    out->write( ls_struct2 ).
 *    out->write( |\n \n \n | ).
 
-    MOVE-CORRESPONDING ls_struct1 TO ls_struct2 EXPANDING NESTED TABLES.
-    out->write( ls_struct2 ).
-    out->write( |\n \n \n | ).
+*    MOVE-CORRESPONDING ls_struct1 TO ls_struct2 EXPANDING NESTED TABLES.
+*    out->write( ls_struct2 ).
+*    out->write( |\n \n \n | ).
 
     " MOVE CORRESPONDING EXPANDING NESTED TABLES KEEPING TARGET LINES
     " Parang Append new value from 1 itab with deep structure/nested tables to another
+
+    " MOVE-CORRESPONDING din ito
+*    ls_struct2 = CORRESPONDING #( ls_struct1 ).
+*    out->write( ls_struct2 ).
+*    out->write( |\n \n \n | ).
+
+*    ls_struct2 = CORRESPONDING #( BASE ( ls_struct2 ) ls_struct1 ).
+*    out->write( ls_struct2 ).
+*    out->write( |\n \n \n | ).
+
+    " Similar to MOVE-CORRESPONDING EXPANDING NESTED TABLES
+    ls_struct2 = CORRESPONDING #( DEEP BASE ( ls_struct2 ) ls_struct1 ).
+    out->write( ls_struct2 ).
+    out->write( |\n \n \n | ).
   ENDMETHOD.
 ENDCLASS.
